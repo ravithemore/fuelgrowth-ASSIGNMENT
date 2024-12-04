@@ -1,132 +1,83 @@
-# 🎥 AI Backend Internship Assignment 🚀
+**AI Backend Internship Assignment**
 
-This project analyzes **influencer performance data** by extracting and processing video content. It automates video downloading, face detection, performance analysis, and report generation, delivering an organized summary of influencer metrics. 📊
+Project Overview:
+This project is designed to analyze influencer performance data by extracting and processing video content. It combines automated video downloading, 
+face detection, performance analysis, and PDF reporting to deliver a comprehensive summary of influencer metrics. 
+The goal is to identify unique influencers, calculate their average performance and reliability, 
+and present the results in an organized format for easy interpretation.
 
----
+Features:
+Extracts facial images from videos
+Analyzes influencer performance metrics
+Generates reports with metrics and images
 
-## 🌟 **Features**
-- 🎭 **Extracts facial images** from videos.
-- 📈 **Analyzes influencer performance metrics** for average performance and reliability.
-- 📝 **Generates professional PDF reports** with influencer metrics and images.
+Setup Instructions:
 
-  
+Access the dataset.
+Install required dependencies ,"pip install pandas opencv-python face_recognition requests reportlab".
+Run the scripts in the following order:  Extraction.ipynb, Process.ipynb and Analyze.ipynb.
 
----
-# 🔄 Workflow Stages
+Workflow Stages:
+1. Extraction Phase
+Purpose: To download videos listed in the provided dataset.
+Process:
+A CSV file (Assignment Data - Sheet1.csv) containing video URLs is loaded.
+Videos are downloaded using their URLs and saved locally in the videos folder, with filenames corresponding to their dataset row indices (e.g., 0.mp4, 1.mp4).
+Output:
+A videos folder containing all downloaded video files.
 
-## 1️⃣ Extraction Phase
-**Purpose:** Downloads videos from the provided dataset.  
-- **Input:** CSV file (`Assignment Data - Sheet1.csv`) with video URLs.  
-- **Process:**  
-  - Downloads videos into the `videos` folder, with filenames matching their row indices (e.g., `0.mp4`, `1.mp4`).  
-- **Output:** `videos` folder containing the downloaded videos.  
+2. Processing Phase
+Purpose: To identify unique influencers and calculate performance metrics.
+Process:
+Each video is analyzed to detect faces using face recognition technology.
+Unique faces are identified and saved in the influencer_faces folder.
+Average performance and reliability metrics are calculated for each influencer:
+Average Performance: Computed from the performance scores in the dataset.
+Reliability: Measured using test-retest reliability from multiple video scores.
+A summary CSV file, sorted_unique_influencers_with_reliability.csv, is generated.
+Output:
+influencer_faces folder: Contains unique face images of influencers.
+sorted_unique_influencers_with_reliability.csv: Summarized influencer metrics.
 
----
+3. Analysis Phase
+Purpose: To create a professional report summarizing the influencer analysis.
+Process:
+The sorted_unique_influencers_with_reliability.csv file and face images from the influencer_faces folder are used.
+A PDF (influencer_table.pdf) is generated with a table showing:
+Influencer ID
+Influencer Face (if available)
+Average Performance
+Reliability
+Output:
+influencer_table.pdf: A visually appealing report summarizing influencer data.
 
-## 2️⃣ Processing Phase
-**Purpose:** Identifies unique influencers and calculates metrics.  
-- **Input:** Downloaded videos from the `videos` folder.  
-- **Process:**  
-  - Detects faces using `face_recognition`.  
-  - Saves unique faces in the `influencer_faces` folder.  
-  - Calculates:  
-    - **Average Performance:** Computed from dataset scores.  
-    - **Reliability:** Measured using test-retest reliability.  
-- **Output:**  
-  - `influencer_faces` folder with unique face images.  
-  - CSV file (`sorted_unique_influencers_with_reliability.csv`) summarizing influencer metrics.  
+File Descriptions:
+1. Input Files
+CSV File: Assignment Data - Sheet1.csv
+Contains influencer video URLs and performance data.
 
----
+2. Output Files
+CSV File: sorted_unique_influencers_with_reliability.csv
+Summarizes influencer metrics, including:
+_Influencer ID
+Average Performance
+Reliability
+First Video URL_
+PDF File: influencer_table.pdf , Displays influencer data in a table format with images.
 
-## 3️⃣ Analysis Phase
-**Purpose:** Creates a professional PDF summarizing the analysis.  
-- **Input:**  
-  - `sorted_unique_influencers_with_reliability.csv`.  
-  - Face images from the `influencer_faces` folder.  
-- **Output:**  
-  - 📄 PDF file (`influencer_table.pdf`) containing:  
-    - Influencer ID.  
-    - Influencer Face (if available).  
-    - Average Performance.  
-    - Reliability.  
+Folder: influencer_faces, Stores unique face images extracted from the videos.
 
----
+Project Highlights:
 
-# 📂 File Descriptions
+Automation: Automates downloading and processing of video data, reducing manual effort.
 
-## 🗂 Input Files
-- **CSV File:** `Assignment Data - Sheet1.csv`  
-  Contains influencer video URLs and performance data.  
+Face Recognition: Utilizes face recognition to identify unique influencers, ensuring no duplicate faces are included.
 
-## 🗂 Output Files
-- **CSV File:** `sorted_unique_influencers_with_reliability.csv`  
-  Summarizes:  
-  - Influencer ID.  
-  - Average Performance.  
-  - Reliability.  
-  - First Video URL.  
-- **PDF File:** `influencer_table.pdf`  
-  A user-friendly report displaying influencer metrics in table format with images.  
+Reliability Metrics: Calculates test-retest reliability to measure consistency in influencer performance.
 
-- **Folder:** `influencer_faces`  
-  Stores unique face images extracted from videos.  
+User-Friendly Reporting: Generates a PDF summarizing data in an easily understandable format
 
----
-
-# 🌟 Project Highlights
-
-- 🤖 **Automation:** Simplifies downloading and processing video data, reducing manual effort.  
-- 🧑‍🦰 **Face Recognition:** Ensures unique identification of influencers, avoiding duplicates.  
-- 📊 **Reliability Metrics:** Measures consistency in influencer performance with test-retest reliability.  
-- 💼 **User-Friendly Reporting:** Provides an organized, visually appealing PDF report.  
-
----
-
-# 🤔 Assumptions
-- Videos without visible faces are excluded from processing.  
-- Influencers are uniquely identified based on face encoding.  
-- Reliability is calculated only for influencers with multiple scores.  
-
----
-
-# 💻 Technologies Used
-- **Programming Languages:** Python  
-- **Libraries:**  
-  - `pandas`  
-  - `opencv-python`  
-  - `face_recognition`  
-  - `requests`  
-  - `reportlab`  
-
----
-
-# 🙌 Contributing
-Contributions are welcome! Create a pull request or open an issue for feedback.  
-
----
-
-# 📧 Contact
-For any queries, reach out to:  
-📩 **Email:** damorravi540@gmail.com 
-
-## ⚙️ **Setup Instructions**
-**Clone the repository**:  
-   ```bash
-   git clone <repository-url>
-   cd <repository-name>
-# Install dependencies
-pip install pandas opencv-python face_recognition requests reportlab
-
-# Run the scripts in order
-# Step 1: Download videos
-jupyter nbconvert --to notebook --execute Extraction.ipynb
-
-# Step 2: Process data to detect faces and compute metrics
-jupyter nbconvert --to notebook --execute Process.ipynb
-
-# Step 3: Generate a summary report in PDF format
-jupyter nbconvert --to notebook --execute Analyze.ipynb ```.
-
-
-
-
+Assumptions:
+Videos without visible faces are not processed or included in the final output.
+Each influencer is uniquely identified based on their face encoding.
+Test-retest reliability is only calculated for influencers with multiple performance scores.
